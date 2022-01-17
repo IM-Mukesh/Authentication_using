@@ -16,15 +16,21 @@ app.get("/", (req, res) => {
   res.send("You are in homepage");
 });
 
-app.post("/login", (req, res) => {
-  const token = jwt.sign(req.body.userID, "get-jwt-token");
-  console.log(req);
-  res.json({
-    status: "Token generaged successfully..",
-    token: token,
-  });
-});
+// app.post("/login", (req, res) => {
+//   const token = jwt.sign(req.body.userID, "get-jwt-token");
+//   console.log(req);
+//   res.json({
+//     status: "Token generaged successfully..",
+//     token: token,
+//   });
+// });
 
+app.post('/login', async (req, res) => {
+  await citySchema.insertMany(data);
+  res.json({
+    status: "Done"
+  })
+})
 app.listen(3000, () => {
   console.log("server is listening at 3000..");
 });
